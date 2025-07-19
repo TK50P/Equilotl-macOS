@@ -60,6 +60,11 @@ go mod tidy
 go build
 ```
 
+#### To Build for macOS target _with_ Apple Silicon
+```sh
+CGO_CFLAGS="-mmacosx-version-min=11" CGO_LDFLAGS="-mmacosx-version-min=11" CGO_ENABLED=1 GOOS=darwin GOARCH=arm64 go build -v -tags "static gui" -ldflags "-s -w -X 'vencord/buildinfo.InstallerGitHash=$(git rev-parse --short HEAD)' -X 'vencord/buildinfo.InstallerTag=${GITHUB_REF_NAME}'" -o Equilotl
+```
+
 ##### Linux Wayland
 ```sh
 go build --tags wayland
